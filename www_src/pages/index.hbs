@@ -1,7 +1,9 @@
 {{> head }}
 
-<h1>Dsdas</h1>
+{{!-- <invoice-editor params="invoice: data.invoice"></invoice-editor> --}}
+<main class="invoice">	
+	<!-- ko component: { name: data.template, params: { invoice: data.invoice } }  --><!-- /ko-->
+</main>
 
-<a href="#" data-bind="generatePDF">Click</a>
 
 {{> foot }}

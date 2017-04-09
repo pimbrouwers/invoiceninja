@@ -1,0 +1,74 @@
+<h1 data-bind="contentEditable: invoice.title"></h1>
+<h4 data-bind="contentEditable: invoice.subtitle"></h4>
+
+<div class="pure-g" class="invoice-header">
+    <div class="pure-u-1-5">
+        <h5>Date</h5>
+        <p data-bind="contentEditable: invoice.date"></p>
+    </div>
+
+    <div class="pure-u-2-5">
+        <h5>To</h5>
+        <p data-bind="contentEditable: invoice.invoicee.title"></p>
+    </div>
+
+    <div class="pure-u-2-5">
+        <h5>Address</h5>
+        <p data-bind="contentEditable: invoice.invoicee.address"></p>
+    </div>
+
+    <div class="pure-u-1">
+        <h5>Notes</h5>
+        <p data-bind="contentEditable: invoice.notes"></p>
+    </div>
+
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-2">
+        <h5>Description</h5>
+    </div>
+
+    <div class="pure-u-1 pure-u-md-1-6 text-right">
+        <h5>Quantity</h5>
+    </div>
+
+    <div class="pure-u-1 pure-u-md-1-6 text-right">
+        <h5>Unit Price</h5>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-6 text-right">
+        <h5>Total</h5>
+    </div>
+</div>
+
+<!-- ko template: { name: 'invoice-item-tmpl', foreach: invoice.items } -->
+<!-- /ko -->
+
+<!-- ko template: { name : 'invoice-item-tmpl', data: invoice.newItem } -->
+<!-- /ko -->
+
+<div class="text-right">
+    <button class="pure-button" data-bind="click: invoice.methods.addNewItem">Add Line Item</button>
+</div>
+
+<pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+
+<script type="text/html" id="invoice-item-tmpl">
+    <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-1-2">           
+            <p data-bind="contentEditable: description"></p>
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-6 text-right">           
+            <p data-bind="contentEditable: quantity"></p>
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-6 text-right">           
+            <p data-bind="contentEditable: unitPrice"></p>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-6 text-right">           
+            <p data-bind="text: total"></p>
+        </div>
+    </div>
+</script>
+
